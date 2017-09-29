@@ -1,0 +1,58 @@
+{
+    "search.exclude": {
+        "# Library folders": true,
+        "node_modules/": true,
+        "# Logs": true,
+        "logs/pm2logs/*.log": true,
+        "logs/*.log": true,
+        "# Build directories": true,
+        "src/app/dist/public/": true,
+        "# Coverage": true,
+        "coverage/": true,
+        "# Reports": true,
+        "reports/": true,
+        "# Test cache": true,
+        ".nyc_output/": true,
+        "# Webstorm": true,
+        ".idea/": true,
+        "# CSS and CSS Maps": true,
+        "*.css": true,
+        "*.css.map": true
+    },
+    "files.exclude": {
+        "# Library folders": true,
+        "node_modules/": true,
+        "# Logs": true,
+        "logs/pm2logs/*.log": true,
+        "logs/*.log": true,
+        "# Build directories": true,
+        "src/app/dist/public/": true,
+        "# Coverage": true,
+        "coverage/": true,
+        "# Reports": true,
+        "reports/": true,
+        "# Test cache": true,
+        ".nyc_output/": true,
+        "# Webstorm": true,
+        ".idea/": true,
+        "# CSS and CSS Maps": true,
+        "*.css": true,
+        "*.css.map": true
+    },
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[sass]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[scss]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    }
+}
