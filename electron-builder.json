@@ -1,0 +1,49 @@
+{
+	"appId": "com.adarsh.electronapp",
+	"copyright": "Adarsh 2017",
+	"productName": "Electron App",
+	"asar": true,
+	"directories": {
+		"buildResources": "dist-assets/",
+		"output": "dist/"
+	},
+	"files": [
+		"package.json",
+    "src/app/index.js",
+    "src/app/index.html",
+		"src/app/dist/",
+		"node_modules/"
+	],
+	"dmg": {
+		"contents": [
+			{
+				"type": "link",
+				"path": "/Applications",
+				"x": 410,
+				"y": 150
+			},
+			{
+				"type": "file",
+				"x": 130,
+				"y": 150
+			}
+		]
+  },
+  "deb": {
+    "maintainer": "Adarsh"
+  },
+	"mac": {
+		"target": "dmg",
+		"category": "public.app-category.tools"
+	},
+	"win": {
+		"target": "nsis"
+	},
+	"linux": {
+		"target": [
+      "deb",
+      "apk",
+      "tar.gz"
+		]
+	}
+}

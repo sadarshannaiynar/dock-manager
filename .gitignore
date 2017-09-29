@@ -1,0 +1,32 @@
+# Library folders
+node_modules/
+
+# Dist
+dist/
+dist-assets/
+
+# Logs
+logs/pm2logs/*.log
+logs/*.log
+
+# Build directories
+src/app/dist/
+
+# Coverage
+coverage/
+
+# Reports
+reports/
+
+# Test cache
+.nyc_output/
+
+# Webstorm
+.idea/
+
+# CSS and CSS Maps
+*.css
+*.css.map
+
+# Mac
+.DS_Store
