@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import actionReducer from './actionReducer';
+import containerReducer from './containerReducer';
 
 const reducers = combineReducers({
-  actionReducer,
+  containerReducer,
 });
 
 export default reducers;

@@ -1,19 +1,9 @@
 import { connect } from 'react-redux';
 import App from 'components/App';
-import actions from 'actions/actionCreators';
 
-const mapStateToProps = state => ({
-  value: state.actionReducer.value,
-});
+const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  increment: () => {
-    dispatch(actions.incrementAction());
-  },
-  decrement: () => {
-    dispatch(actions.decrementAction());
-  },
-});
+const mapDispatchToProps = () => ({});
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 

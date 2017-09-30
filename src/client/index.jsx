@@ -9,6 +9,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import ApplicationContainer from 'containers/AppContainer';
 import configureStore from 'store';
 
+require('styles/app.sass');
 require('es6-promise').polyfill();
 
 const history = createBrowserHistory();

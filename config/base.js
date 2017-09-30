@@ -19,6 +19,7 @@ module.exports = {
     alias: {
       actions: path.resolve(__dirname, '../src/client/actions/'),
       components: path.resolve(__dirname, '../src/client/components/'),
+      config: path.resolve(__dirname, '../src/client/config'),
       constants: path.resolve(__dirname, '../src/client/constants/'),
       containers: path.resolve(__dirname, '../src/client/containers/'),
       images: path.resolve(__dirname, '../src/client/images/'),

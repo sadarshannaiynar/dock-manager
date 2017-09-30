@@ -24,17 +24,12 @@ describe('Testing App Component', () => {
       expect(wrapper.exists()).to.be.true;
     });
 
-    it('Must render the p element', () => {
-      expect(wrapper.find('p').exists()).to.be.true;
-      expect(wrapper.find('p').text()).to.be.eql('Value: 1');
+    it('Must render the div#main-view element', () => {
+      expect(wrapper.find('div#main-view').exists()).to.be.true;
     });
 
-    it('Must render the increment button', () => {
-      expect(wrapper.find('#increment_button').exists()).to.be.true;
-    });
-
-    it('Must render the decrement button', () => {
-      expect(wrapper.find('#decrement_button').exists()).to.be.true;
+    it('Must render the SidebarComponent element', () => {
+      expect(wrapper.find('SidebarComponent').exists()).to.be.true;
     });
   });
 });

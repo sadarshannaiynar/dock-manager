@@ -3,6 +3,9 @@ const path = require('path');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const tasks = require('./tasks');
+
+tasks.bind(electron);
 
 let mainWindow;
 const createWindow = () => {
