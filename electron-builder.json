@@ -1,6 +1,6 @@
 {
-	"appId": "com.adarsh.dockstation",
-	"productName": "Dock Station",
+	"appId": "com.adarsh.dockmanager",
+	"productName": "Dock Manager",
 	"asar": true,
 	"directories": {
 		"buildResources": "assets/",
@@ -30,7 +30,7 @@
   },
 	"mac": {
 		"target": "dmg",
-		"category": "public.app-category.tools"
+		"category": "public.app-category.developer-tools"
 	},
 	"win": {
 		"target": "nsis"

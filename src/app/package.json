@@ -1,5 +1,5 @@
 {
-  "name": "dock-station",
+  "name": "dock-manager",
   "version": "1.0.0",
   "description": "A cross-platform desktop application to manage the local docker installation",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sadarshannaiynar/dock-station.git"
+    "url": "git+https://github.com/sadarshannaiynar/dock-manager.git"
   },
   "keywords": [
     "electron",
@@ -20,9 +20,9 @@
   "author": "Adarsh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sadarshannaiynar/dock-station/issues"
+    "url": "https://github.com/sadarshannaiynar/dock-manager/issues"
   },
-  "homepage": "https://github.com/sadarshannaiynar/dock-station#readme",
+  "homepage": "https://github.com/sadarshannaiynar/dock-manager#readme",
   "dependencies": {},
   "devDependencies": {}
 }
