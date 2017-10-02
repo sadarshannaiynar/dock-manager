@@ -1,18 +1,14 @@
 {
-	"appId": "com.adarsh.electronapp",
-	"copyright": "Adarsh 2017",
-	"productName": "Electron App",
+	"appId": "com.adarsh.dockstation",
+	"productName": "Dock Station",
 	"asar": true,
 	"directories": {
-		"buildResources": "dist-assets/",
-		"output": "dist/"
+		"buildResources": "assets/",
+		"output": "build/",
+		"app": "./src/app"
 	},
 	"files": [
-		"package.json",
-    "src/app/index.js",
-    "src/app/index.html",
-		"src/app/dist/",
-		"node_modules/"
+    "dist/**/*"
 	],
 	"dmg": {
 		"contents": [

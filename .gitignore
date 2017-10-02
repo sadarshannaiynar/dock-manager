@@ -2,15 +2,15 @@
 node_modules/
 
 # Dist
-dist/
-dist-assets/
+build/
 
 # Logs
 logs/pm2logs/*.log
 logs/*.log
 
 # Build directories
-src/app/dist/
+src/app/dist/*.js
+src/app/dist/*.css
 
 # Coverage
 coverage/

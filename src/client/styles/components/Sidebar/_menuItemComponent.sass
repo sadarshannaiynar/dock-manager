@@ -1,3 +1,15 @@
 .nav-sidebar-menu-item
-    color: $PRIMARY_COLOR !important
-    
+    color: $DEFAULT_TEXT_COLOR !important
+    border-bottom: 0px !important
+
+    &:hover
+        background-color: $PRIMARY_COLOR !important
+        cursor: pointer
+
+.nav-sidebar-menu-item.active
+    background-color: $PRIMARY_COLOR !important
+
+    &:after
+        border-right: 15px solid $PRIMARY_COLOR !important
+        border-top: 15px solid $PRIMARY_COLOR !important
+        background-color: transparent !important

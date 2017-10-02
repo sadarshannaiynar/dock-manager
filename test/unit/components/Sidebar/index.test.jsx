@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
+import { spy } from 'sinon';
 import SidebarComponent from 'components/Sidebar';
 
 const initiator = () => {
@@ -47,6 +48,31 @@ describe('Testing the SidebarComponent', () => {
       expect(ImagesMenuItemWrapper.find('Icon').exists()).to.be.true;
       expect(ImagesMenuItemWrapper.find('Icon').props().name).to.be.eql('book');
       expect(ImagesMenuItemWrapper.childAt(1).text()).to.be.eql('Images');
+    });
+  });
+
+  const handleClickSpy = spy(SidebarComponent.prototype, 'handleClick');
+
+  describe('Functionality Tests', () => {
+    const { wrapper } = initiator();
+
+    it('Must call handleClick', () => {
+      wrapper.instance().handleClick(undefined, { name: 'name' });
+      expect(handleClickSpy.calledOnce).to.be.true;
+    });
+  });
+
+  describe('Input Events Tests', () => {
+    const { wrapper } = initiator();
+
+    it('Must call handleClick on MenuItem click', () => {
+      handleClickSpy.reset();
+      expect(wrapper.state().activeItem).to.be.eql('containers');
+      const menuItemWrapper = wrapper.find('MenuItem').last();
+      menuItemWrapper.simulate('click', {}, menuItemWrapper.props());
+      expect(handleClickSpy.calledOnce).to.be.true;
+      wrapper.update();
+      expect(wrapper.state().activeItem).to.be.eql('images');
     });
   });
 });

@@ -104,7 +104,20 @@ describe('Testing the containerReducer', () => {
       });
     });
 
-    it('Must return the next state on GET_ALL_CONTAINERS_FAIL action with failed previous state', () => {
+    it('Must return the next state on GET_ALL_CONTAINERS_FAIL action with failed previous state and same error', () => {
+      const previousState = { successLog: [], errorLog: 'error' };
+      const action = {
+        type: 'GET_ALL_CONTAINERS_FAIL',
+        payload: 'error',
+      };
+      const nextState = reducer(previousState, action);
+      expect(nextState).to.deep.equal({
+        successLog: [],
+        errorLog: 'error',
+      });
+    });
+
+    it('Must return the next state on GET_ALL_CONTAINERS_FAIL action with failed previous state and different error', () => {
       const previousState = { successLog: [], errorLog: 'error' };
       const action = {
         type: 'GET_ALL_CONTAINERS_FAIL',

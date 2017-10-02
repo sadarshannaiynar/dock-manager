@@ -34,11 +34,11 @@ export const getAllContainers = ipcRenderer => (
     ipcRenderer.send('get-all-containers');
     dispatch({ type: actions.GET_ALL_CONTAINERS });
 
-    ipcRenderer.on('success-get-all-containers', (event, { log }) => {
+    ipcRenderer.once('success-get-all-containers', (event, { log }) => {
       dispatch(getAllContainersSuccess(successFormatLog(log)));
     });
 
-    ipcRenderer.on('error-get-all-containers', (event, { log }) => {
+    ipcRenderer.once('error-get-all-containers', (event, { log }) => {
       dispatch(getAllContainersFail(log));
     });
   });

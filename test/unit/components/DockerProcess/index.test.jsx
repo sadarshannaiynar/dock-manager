@@ -2,10 +2,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import { spy } from 'sinon';
+import sinon, { spy } from 'sinon';
 import DockerProcessComponent from 'components/DockerProcess';
 
-const initiator = (dataFlag) => {
+const initiator = (dataFlag, errorFlag) => {
   const containers = [{
     id: '123456789012',
     fullId: '123456789012345',
@@ -18,8 +18,8 @@ const initiator = (dataFlag) => {
   const mockFunc = spy();
 
   const props = {
-    successLog: (dataFlag) ? containers : [],
-    errorLog: '',
+    successLog: (dataFlag && !errorFlag) ? containers : [],
+    errorLog: (!dataFlag && errorFlag) ? 'Error encountered' : '',
     getAllContainers: mockFunc,
   };
 
@@ -106,7 +106,35 @@ describe('Testing the DockerProcessComponent', () => {
       });
     });
 
-    describe('Without Data', () => {
+    describe('With error', () => {
+      const { wrapper } = initiator(false, true);
+
+      it('Must render the component', () => {
+        expect(wrapper.exists()).to.be.true;
+      });
+
+      it('Must render the Modal', () => {
+        expect(wrapper.find('Modal').exists()).to.be.true;
+      });
+
+      it('Must render the Modal Header', () => {
+        expect(wrapper.find('ModalHeader').exists()).to.be.true;
+      });
+
+      it('Must render the Oops... header text', () => {
+        expect(wrapper.find('ModalHeader').childAt(0).text()).to.be.eql('Oops...');
+      });
+
+      it('Must render the Modal Content', () => {
+        expect(wrapper.find('ModalContent').exists()).to.be.true;
+      });
+
+      it('Must render the error in Modal Content', () => {
+        expect(wrapper.find('ModalContent').childAt(0).text()).to.be.eql('Error encountered');
+      });
+    });
+
+    describe('Without Data and error', () => {
       const { wrapper } = initiator(false);
 
       it('Must render the component', () => {
@@ -122,15 +150,24 @@ describe('Testing the DockerProcessComponent', () => {
   describe('Functionality Tests', () => {
     const componentDidMountSpy = spy(DockerProcessComponent.prototype, 'componentDidMount');
     const componentWillReceivePropsSpy = spy(DockerProcessComponent.prototype, 'componentWillReceiveProps');
+    const componentWillUnmountSpy = spy(DockerProcessComponent.prototype, 'componentWillUnmount');
+    const pollTheCommandSpy = spy(DockerProcessComponent.prototype, 'pollTheCommand');
 
     const { wrapper, mockFunc } = initiator(false);
 
     it('Must call componentDidMount', () => {
+      const clock = sinon.useFakeTimers();
       componentDidMountSpy.reset();
+      pollTheCommandSpy.reset();
       mockFunc.reset();
       wrapper.instance().componentDidMount();
       expect(componentDidMountSpy.calledOnce).to.be.true;
       expect(mockFunc.calledOnce).to.be.true;
+      clock.tick(3200);
+      expect(pollTheCommandSpy.called).to.be.false;
+      clock.tick(1900);
+      expect(pollTheCommandSpy.calledOnce).to.be.true;
+      clock.restore();
     });
 
     it('Must call componentWillReceiveProps', () => {
@@ -144,6 +181,20 @@ describe('Testing the DockerProcessComponent', () => {
       wrapper.update();
       expect(wrapper.state().successLog).to.deep.equal([{ id: '12345' }]);
       expect(wrapper.state().errorLog).to.deep.equal('error');
+    });
+
+    it('Must call componentWillUnmount', () => {
+      componentWillUnmountSpy.reset();
+      wrapper.instance().componentWillUnmount();
+      expect(componentWillUnmountSpy.calledOnce).to.be.true;
+    });
+
+    it('Must call pollTheCommand', () => {
+      pollTheCommandSpy.reset();
+      mockFunc.reset();
+      wrapper.instance().pollTheCommand();
+      expect(pollTheCommandSpy.calledOnce).to.be.true;
+      expect(mockFunc.calledOnce).to.be.true;
     });
   });
 });

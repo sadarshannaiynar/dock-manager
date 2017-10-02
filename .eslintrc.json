@@ -10,11 +10,16 @@
         "beforeEach": true,
         "context": true,
         "it": true,
+        "after": true,
+        "before": true,
+        "afterEach": true,
         "fetch": true
     },
     "rules": {
         "import/no-extraneous-dependencies": 0,
-        "react/jsx-sort-props": "error",
+        "react/jsx-sort-props": [2, {
+            "reservedFirst": false
+          }],
         "react/forbid-prop-types": 0
     },
     "settings" : {

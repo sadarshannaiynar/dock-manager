@@ -14,13 +14,16 @@ const containerReducer = (state = defaultState, action) => {
         errorLog: '',
       };
     case actions.GET_ALL_CONTAINERS_FAIL:
-      return {
-        ...state,
-        errorLog: action.payload,
-        successLog: [],
-      };
+      if (state.errorLog !== action.payload) {
+        return {
+          ...state,
+          errorLog: action.payload,
+          successLog: [],
+        };
+      }
+      return state;
     default:
-      return { ...state };
+      return state;
   }
 };
 
